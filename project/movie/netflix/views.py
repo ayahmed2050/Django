@@ -6,7 +6,7 @@ from . models import movies
 
 def index(request):
     movie = movies.objects.all()
-    return render(request, "netflix/index.html", {
+    return render(request, "index.html", {
         'movie': movie
     })
 
@@ -15,14 +15,14 @@ def create(request):
     if form.is_valid():
         form.save()
         return redirect("index")
-    return render(request, "netflix/create.html", {
+    return render(request, "create.html", {
         'form': form
     })
 
 
 def show(request, id):
     movie = movies.objects.get(pk=id)
-    return render(request, "netflix/show.html", {
+    return render(request, "show.html", {
         'movie': movie
     })
 
@@ -33,7 +33,7 @@ def update(request, id):
     if form.is_valid():
         form.save()
         return redirect("index")
-    return render(request, "netflix/update.html", {
+    return render(request, "update.html", {
         'form': form,
         'movie': movie
     })
